@@ -20,7 +20,7 @@ obj.history = {}
 --- WinWin.gridparts
 --- Variable
 --- An integer specifying how many gridparts the screen should be divided into. Defaults to 30.
-obj.gridparts = 30
+obj.gridparts = 60
 
 --- WinWin:stepMove(direction)
 --- Method
@@ -136,7 +136,13 @@ function obj:moveAndResize(option)
         local stepw = cres.w/obj.gridparts
         local steph = cres.h/obj.gridparts
         local wf = cwin:frame()
-        if option == "halfleft" then
+        if option == "topthird" then
+            cwin:setFrame({x=cres.x, y=cres.y, w=cres.w, h=cres.h/60*25})
+        elseif option == "middlethird" then
+            cwin:setFrame({x=cres.x, y=cres.y+cres.h/60*17, w=cres.w, h=cres.h/60*25})
+        elseif option == "bottomthird" then
+            cwin:setFrame({x=cres.x, y=cres.y+cres.h/60*34, w=cres.w, h=cres.h/60*25})
+        elseif option == "halfleft" then
             cwin:setFrame({x=cres.x, y=cres.y, w=cres.w/2, h=cres.h})
         elseif option == "halfright" then
             cwin:setFrame({x=cres.x+cres.w/2, y=cres.y, w=cres.w/2, h=cres.h})
