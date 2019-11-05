@@ -24,16 +24,16 @@
 
     ],
     "doc" : "Use Bing daily picture as your wallpaper, automatically.\n\nDownload: [https:\/\/github.com\/Hammerspoon\/Spoons\/raw\/master\/Spoons\/BingDaily.spoon.zip](https:\/\/github.com\/Hammerspoon\/Spoons\/raw\/master\/Spoons\/BingDaily.spoon.zip)",
-    "items" : [
+    "Field" : [
 
     ],
-    "Command" : [
+    "items" : [
 
     ],
     "Method" : [
 
     ],
-    "Field" : [
+    "Command" : [
 
     ],
     "name" : "BingDaily"

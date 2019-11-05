@@ -27,15 +27,16 @@ end
 
 local function bingRequest()
     local user_agent_str = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4"
-    local json_req_url = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
+    local json_req_url = "https://wallhaven.now.sh/search?keyword=%22board%20games%22%0A&sorting=random&nsfw=0&sketchy=0"
     hs.http.asyncGet(json_req_url, {["User-Agent"]=user_agent_str}, function(stat,body,header)
         if stat == 200 then
             if pcall(function() hs.json.decode(body) end) then
                 local decode_data = hs.json.decode(body)
-                local pic_url = decode_data.images[1].url
+                local pic_url = string.gsub(decode_data.images[1].thumb, ".-(%d+.jpg)", "https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-%1")
+                print (pic_url)
                 local pic_name = hs.http.urlParts(pic_url).lastPathComponent
                 if obj.last_pic ~= pic_name then
-                    obj.full_url = "https://www.bing.com" .. pic_url
+                    obj.full_url = pic_url
                     if obj.task then
                         obj.task:terminate()
                         obj.task = nil
